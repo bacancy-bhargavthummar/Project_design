@@ -1,0 +1,16 @@
+
+<%= form_with(model: [ @book, @book.comments.build ], local: true) do |form| %>
+
+  <p> 
+  <strong>Commenter : </strong>
+  <%= current_user.user_name %>
+  </p>
+  
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

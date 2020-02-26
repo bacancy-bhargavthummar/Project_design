@@ -1,0 +1,42 @@
+<h1>Books</h1>
+
+<%= form_tag("/", method: "get", remote: false) do %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "search" %>
+  <% end %>
+<br>
+<table border="2">
+  <thead>
+    <tr>
+      <th>Book name</th>
+      <th>Book description</th>
+      <th>Book author</th>
+      <th>ISBN</th>
+      <th>Book price</th>
+      <th>Book qty</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books_result.each do |book| %>
+      <tr>
+        <td><%= book.book_name %></td>
+        <td><%= book.book_description %></td>
+        <td><%= book.book_author %></td>
+        <td><%= book.isbn %></td>
+        <td><%= book.book_price %></td>
+        <td><%= book.book_qty %></td>
+        <td><%= book.category.category_name %></td>
+        <td><%= link_to 'Show', book %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Back','/' %> 
+<% if current_user %>
+| <%= link_to 'New Book', new_book_path %>
+<% end %>

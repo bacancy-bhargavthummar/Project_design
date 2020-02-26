@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PLogin</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <!-- <a class="navbar-brand">
+    <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+  </a> -->
+  <a class="navbar-brand">Online Book Store</a>
+
+  <% if current_user && current_user.admin %>
+  <%= link_to 'Users Data','/users/index', class: "btn btn-outline-success my-2 my-sm-0" %> 
+  <% end %>
+
+  <% if current_user %>
+  <%= link_to 'Edit profile',edit_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0" %>  
+  <%= link_to 'Your Uploads','/books/index2', class: "btn btn-outline-success my-2 my-sm-0" %>  
+  <%= link_to 'Sign out',destroy_user_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0" %>  
+  <% else %>
+  <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0" %>  
+  <%= link_to 'Sign In',user_session_path, class: "btn btn-outline-success my-2 my-sm-0" %>  
+  <% end %>
+   <%= link_to 'Books List', books_path, class: "btn btn-outline-success my-2 my-sm-0" %>  
+   
+   <div class="d-flex justify-content-right">
+      <div class="p-2 ">
+   <%= session[:current_user_email] %>
+   </div>
+   </div>
+
+   <form class="form-inline my-2 my-lg-0">
+   <!-- search -->
+ </form>
+
+</nav>
+  </head>
+
+  <body>
+  <%= render "layouts/alerts" %>
+    <%= yield %>
+  </body>
+</html>

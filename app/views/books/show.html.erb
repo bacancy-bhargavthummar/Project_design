@@ -1,0 +1,68 @@
+ <% if @book.image.present? %>
+<div style="width:400px; hiegth:auto" >
+<%= image_tag(@book.image, style:"width:100%") %>
+</div>
+<% else %>
+<h3> Image is not uploaded </h3>
+<% end %>
+
+<p>
+  <strong>Book name:</strong>
+  <%= @book.book_name %>
+</p>
+
+<p>
+  <strong>Book description:</strong>
+  <%= @book.book_description %>
+</p>
+
+<p>
+  <strong>Book author:</strong>
+  <%= @book.book_author %>
+</p>
+
+<p>
+  <strong>ISBN no:</strong>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <strong>Book price:</strong>
+  <%= @book.book_price %>
+</p>
+
+<p>
+  <strong>Book qty:</strong>
+  <%= @book.book_qty %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @book.category.category_name %>
+</p>
+
+<hr>
+<h2>Comments</h2>
+ <%= render @book.comments %>
+ <hr>
+
+ <% if current_user %>
+<h2> Add Comments here </h2>
+<%= render 'comments/form' %>
+<% else %>
+<h3> Please Sign in for add comments </h3>
+<% end %>
+
+<br>
+
+<% if @book_seller.present? %>
+<% if current_user && (@book_seller.seller_id == current_user.id || current_user.admin) %>
+<%= link_to 'Edit', edit_book_path(@book ,@book_seller) %> |
+<% end %>
+<% end %>
+
+<% if current_user && current_user.admin %>
+<%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %> 
+
+<%= link_to 'Back', books_path %>

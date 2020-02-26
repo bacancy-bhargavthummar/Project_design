@@ -1,0 +1,92 @@
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->  
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/util.css">
+	<link rel="stylesheet" type="text/css" href="/assets/main.css">
+<!--===============================================================================================-->
+</head>
+
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(/assets/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						Sign In
+					</span>
+				</div>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login100-form validate-form'}) do |f| %>
+
+          
+
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+            <span class="label-input100">Email</span>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input100', placeholder: 'Enter email' %>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+            <span class="label-input100">Password</span>
+            <%= f.password_field :password, autocomplete: "current-password", class: 'input100', placeholder: 'Enter password' %>
+						<span class="focus-input100"></span>
+					</div>
+
+          <div class="flex-sb-m w-full p-b-30">
+            <% if devise_mapping.rememberable? %>
+              <div class="contact100-form-checkbox">
+                <%= f.check_box :remember_me, class: 'input-checkbox100', id: 'ckb1' %>
+                <label class="label-checkbox100" for="ckb1">
+							  	Remember me
+                </label>
+              <% end %>
+						</div>
+
+						<div>
+							<a href="#" class="txt1">
+								Forgot Password?
+							</a>
+						</div>
+					</div>
+
+					<div class="container-login100-form-btn">
+            <%= f.submit "Log in", class: 'login100-form-btn' %>
+          </div>
+        <% end %>
+			</div>
+		</div>
+  </div>
+
+  <!--===============================================================================================-->
+	<script src="/vendor/assets/javascripts/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/assets/javascripts/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/assets/javascripts/bootstrap/js/popper.js"></script>
+	<script src="/vendor/assets/javascripts/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/assets/javascripts/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="v  endor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+</body>
+</html>

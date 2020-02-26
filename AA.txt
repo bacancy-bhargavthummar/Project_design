@@ -1,0 +1,26 @@
+  @book = Book.find(params[:book_id])
+        comment=params[:comment]
+        @comment = @book.comments.new
+
+         @comment.commenter = session[:commenter] 
+         @comment.body = comment[:body]
+        if @comment.save 
+        redirect_to book_path(@book)
+        end
+
+
+
+
+        <%= form_tag("/books/index2", method: "get", remote: false) do %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "search" %>
+  <% end %>
+  <br>
+
+
+
+  <%= search_form_for @book do |b| %>
+  <%= b.search_field :book_name_or_book_author_or_isbn_cont %>
+  <%= b.submit "Search" %>
+  <% end %>
+  <br>
